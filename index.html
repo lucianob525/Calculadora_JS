@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+
+    <style>
+    
+      .calculadora {
+        margin-top: 40px;
+        border: solid 1px #000;
+        padding: 30px;
+        background-color:rgb(139, 4, 4);
+        border-radius: 10px;
+        box-shadow: 1px 1px 5px #000;
+        height: 100%;
+      }
+      .btn {
+        width: 60px;
+        height: 50px;
+        margin: 5px;
+        box-shadow: 1px 1px 1px #000;
+        font-size: 30px;
+      }
+      .resultado {
+        text-align: right;
+        font-size: 30px;
+        margin-top: 10px;
+        margin-bottom: 20px;
+        border: solid 1px #000;
+        box-shadow: 1px 1px 1px #000;
+      }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+          <div class="col d-flex justify-content-center">
+            <br />
+
+            <div class="calculadora"> 
+                <div class="row">
+                    <div class="col-sm-9">
+                    <input id="display" type="text" class="form-control resultado" placeholder="0" disabled="disabled" />
+                    </div>
+                    <div class="col-sm-3">
+                    <button class="btn btn-lg btn-danger" onclick="calcular('acao','c')">C</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3">
+                        <button class="btn btn-lg btn-dark" onclick="calcular('valor',7)">7</button>
+                    </div>
+                    <div class="col-sm-3">
+                        <button class="btn btn-lg btn-dark" onclick="calcular('valor',8)">8</button>
+                    </div>
+                    <div class="col-sm-3">
+                        <button class="btn btn-lg btn-dark" onclick="calcular('valor',9)">9</button>
+                    </div>
+                    <div class="col-sm-3">
+                        <button class="btn btn-lg btn-primary" onclick="calcular('acao','/')">/</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3">
+                        <button class="btn btn-lg btn-dark" onclick="calcular('valor',4)">4</button>
+                    </div>
+                    <div class="col-sm-3">
+                        <button class="btn btn-lg btn-dark" onclick="calcular('valor',5)">5</button>
+                    </div>
+                    <div class="col-sm-3">
+                        <button class="btn btn-lg btn-dark" onclick="calcular('valor',6)">6</button>
+                    </div>
+                    <div class="col-sm-3">
+                        <button class="btn btn-lg btn-primary" onclick="calcular('acao','*')">x</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3">
+                        <button class="btn btn-lg btn-dark" onclick="calcular('valor',1)">1</button>
+                    </div>
+                    <div class="col-sm-3">
+                        <button class="btn btn-lg btn-dark" onclick="calcular('valor',2)">2</button>
+                    </div>
+                    <div class="col-sm-3">
+                        <button class="btn btn-lg btn-dark" onclick="calcular('valor',3)">3</button>
+                    </div>
+                    <div class="col-sm-3">
+                        <button class="btn btn-lg btn-primary" onclick="calcular('acao','-')">-</button>
+                    </div>
+                    </div>
+                <div class="row">
+                    <div class="col-sm-3">
+                        <button class="btn btn-lg btn-dark" onclick="calcular('valor',0)">0</button>
+                    </div>
+                    <div class="col-sm-3">
+                        <button class="btn btn-lg btn-dark" onclick="calcular('acao','.')">.</button>
+                    </div>
+                    <div class="col-sm-3">
+                        <button class="btn btn-lg btn-success" onclick="calcular('acao','=')">=</button>
+                    </div>
+                    <div class="col-sm-3">
+                        <button class="btn btn-lg btn-primary" onclick="calcular('acao','+')">+</button>
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
+    </div>
+    <script>
+        function calcular(tipo, valor){
+            if(tipo=='valor'){
+                if(document.getElementById('display').value!=0){
+                    document.getElementById('display').value+=valor;
+                }else{
+                    document.getElementById('display').value=valor;
+                }
+            }else if(tipo=='acao'&& document.getElementById('display')!=0){
+                if(valor=='c'){
+                    document.getElementById('display').value = 0;
+                }else if(valor=='*' || valor =='/' || valor=='-' || valor=='+' || valor=='.'){
+                    document.getElementById('display').value+=valor;
+                }else if(valor=='='){
+                    var calculo = eval(document.getElementById('display').value);
+                    document.getElementById('display').value = calculo;
+                }
+         
+            }
+        }
+    </script>
+</body>
+</html>
